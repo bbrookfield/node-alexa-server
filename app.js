@@ -1,8 +1,24 @@
-var express = require('express');
-var app = express();
+var express = require('express')();
+var alexa = require('alexa-app');
+var app = new alexa.app('sample');
 
-app.get('/', function(req, res) {
-    res.status(200).send('Hello');
+app.intent('picknumber',
+    {
+        "slots":{"number":"NUMBER"}
+        ,"utterances":[ "say the number {number}" ]
+    },
+    function(request,response) {
+        var number = request.slot('number');
+        response.say("You asked for the number "+ number);
+    }
+);
+
+// Manually hook the handler function into express
+express.post('/sample',function(req,res) {
+    app.request(req.body)        // connect express to alexa-app
+        .then(function(response) { // alexa-app returns a promise with the response
+            res.json(response);      // stream it to express' output
+        });
 });
 
-app.listen(process.env.PORT);
+express.listen(process.env.PORT);
