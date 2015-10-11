@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var request = require('request');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -10,25 +11,24 @@ var alexa = require('alexa-app');
 
 
 var alexaApp = new alexa.app('sample');
-var temperature = 60;
 alexaApp.launch(function(req, res) {
     console.log('REQUEST', JSON.stringify(req));
     res.say('I am amazing');
 });
 
-alexaApp.intent('setTemp',
+/*alexaApp.intent('setTemp',
     {
         "slots": {
             "temperature": "NUMBER"
         }
         ,"utterances":[ "set the temperature to {temperature}" ]
     },
-    function(request, response) {
-        console.log(JSON.stringify(request));
-        temperature = request.slot('temperature');
-        response.say("I have set the temperature to " + temperature);
+    function(req, res) {
+        console.log(JSON.stringify(req));
+        temperature = req.slot('temperature');
+        res.say("I have set the temperature to " + temperature);
     }
-);
+);*/
 
 alexaApp.intent('getTemp',
     {
@@ -37,9 +37,15 @@ alexaApp.intent('getTemp',
         }
         ,"utterances":["what is the temperature"]
     },
-    function(request, response) {
-        console.log(JSON.stringify(request));
-        response.say("the temperature is " + temperature);
+    function(req, res) {
+        console.log(JSON.stringify(req));
+        request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                res.say("the temperature is " + JSON.parse(body).temp);
+            } else {
+                res.say('There was an error getting the temperature.');
+            }
+        });
     }
 );
 
