@@ -50,7 +50,7 @@ setInterval(function() {
         temperature = JSON.parse(body).temp;
         targetTemperature = JSON.parse(body).t_cool;
     });
-}, 600000);
+}, 60000);
 
 
 // Manually hook the handler function into express
