@@ -38,7 +38,7 @@ alexaApp.intent('getTemp',
         ,"utterances":["what is the temperature"]
     },
     function(req, res) {
-        console.log(req.body.temp);
+        console.log(JSON.stringify(req));
         request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 res.say("the temperature is " + JSON.parse(body).temp);
@@ -52,6 +52,7 @@ alexaApp.intent('getTemp',
 
 // Manually hook the handler function into express
 app.post('/sample',function(req,res) {
+    console.log(req.body.temp);
     alexaApp.request(req.body)        // connect express to alexa-app
         .then(function(response) { // alexa-app returns a promise with the response
             res.json(response);      // stream it to express' output
