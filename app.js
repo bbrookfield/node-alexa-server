@@ -16,7 +16,7 @@ alexaApp.launch(function(req, res) {
     res.say('I am amazing');
 });
 
-app.intent('sayNumber',
+alexaApp.intent('sayNumber',
     {
         "slots":{"number":"NUMBER"}
         ,"utterances":[ "say the number {number}" ]
@@ -28,16 +28,11 @@ app.intent('sayNumber',
 );
 
 // Manually hook the handler function into express
-express.post('/sample',function(req,res) {
+app.post('/sample',function(req,res) {
     alexaApp.request(req.body)        // connect express to alexa-app
         .then(function(response) { // alexa-app returns a promise with the response
             res.json(response);      // stream it to express' output
         });
-});
-
-
-app.post('/sample',function(req,res) {
-    console.log(req.body);
 });
 
 app.listen(process.env.PORT);
