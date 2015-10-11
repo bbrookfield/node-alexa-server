@@ -43,7 +43,7 @@ alexaApp.intent('getTemp',
             console.log('error: ', error);
             console.log('body: ', body);
             if (!error && response.statusCode == 200) {
-                res.say("the temperature is " + Math.round(JSON.parse(body).temp));
+                res.say("the temperature is " + 60);
             } else {
                 res.say('There was an error getting the temperature.');
             }
