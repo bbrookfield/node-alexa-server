@@ -14,11 +14,12 @@ app.intent('picknumber',
 );
 
 // Manually hook the handler function into express
-express.post('/sample',function(req,res) {
+express.post('/sample',function(req, res) {
     app.request(req.body)        // connect express to alexa-app
         .then(function(response) { // alexa-app returns a promise with the response
             res.json(response);      // stream it to express' output
         });
+    console.log(req.body);
 });
 
 express.listen(process.env.PORT);
