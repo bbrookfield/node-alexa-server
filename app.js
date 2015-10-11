@@ -42,11 +42,7 @@ alexaApp.intent('getTemp',
         request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
             console.log('error: ', error);
             console.log('body: ', JSON.parse(body).temp);
-            if (!error) {
-                res.say("the temperature is 60");
-            } else {
-                res.say('There was an error getting the temperature.');
-            }
+            res.say("the temperature is 60");
         });
     }
 );
