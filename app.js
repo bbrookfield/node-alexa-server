@@ -10,15 +10,16 @@ app.use(bodyParser.json());
 
 var alexaApp = new alexa.app('test');
 alexaApp.launch(function(request,response) {
+
     response.say("You launched the app!");
+    console.log(request.body);
 });
 alexaApp.dictionary = {"names":["matt","joe","bob","bill","mary","jane","dawn"]};
 alexaApp.intent("nameIntent",
     {
         "slots":{"NAME":"LITERAL"}
         ,"utterances": [
-        "my {name is|name's} {names|NAME}"
-        ,"set my name to {names|NAME}"
+        "set my name to {names|NAME}"
     ]
     },
     function(request,response) {
