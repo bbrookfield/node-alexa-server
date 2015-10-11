@@ -23,7 +23,7 @@ alexaApp.intent('sayNumber',
     },
     function(request, response) {
         var number = request.slot('number');
-        response.say("You asked for the number "+number);
+        response.say("You asked for the number " + number);
     }
 );
 
