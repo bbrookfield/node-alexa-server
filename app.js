@@ -51,8 +51,7 @@ alexaApp.intent('getTemp',
 
 
 // Manually hook the handler function into express
-app.post('/sample',function(req,res) {
-    console.log(req.body.temp);
+app.post('/sample',function(req, res) {
     alexaApp.request(req.body)        // connect express to alexa-app
         .then(function(response) { // alexa-app returns a promise with the response
             res.json(response);      // stream it to express' output
