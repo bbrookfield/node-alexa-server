@@ -22,6 +22,7 @@ alexaApp.intent('sayNumber',
         ,"utterances":[ "say the number {number}" ]
     },
     function(request, response) {
+        console.log(JSON.stringify(request));
         var number = request.slot('number');
         response.say("You asked for the number " + number);
     }
