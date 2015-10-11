@@ -41,8 +41,7 @@ alexaApp.intent('getTemp',
         console.log(JSON.stringify(req));
         request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
             console.log('error: ', error);
-            console.log('body: ', body);
-            console.log('response: ', response);
+            console.log('body: ', JSON.parse(body).temp);
             if (!error) {
                 res.say("the temperature is 60");
             } else {
