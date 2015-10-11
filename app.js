@@ -25,7 +25,7 @@ alexaApp.intent('setTemp',
     },
     function(req, res) {
         console.log(JSON.stringify(req));
-        request.post(process.env.THERMOSTAT_URL + '/tstat', {form:{t_cool: parseInt(req.slot('temperature'))}});
+        request.post(process.env.THERMOSTAT_URL + '/tstat', {json: {t_cool: parseFloat(req.slot('temperature'))}});
         res.say("I have set the temperature to " + parseInt(req.slot('temperature')));
     }
 );
