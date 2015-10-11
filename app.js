@@ -38,7 +38,7 @@ alexaApp.intent('getTemp',
         ,"utterances":["what is the temperature"]
     },
     function(req, res) {
-        console.log(JSON.stringify(req));
+        console.log(req.body.temp);
         request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 res.say("the temperature is " + JSON.parse(body).temp);
