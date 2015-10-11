@@ -12,7 +12,7 @@ var alexaApp = new alexa.app('test');
 alexaApp.launch(function(request,response) {
 
     response.say("You launched the app!");
-    console.log(request.body);
+    console.log(request);
 });
 alexaApp.dictionary = {"names":["matt","joe","bob","bill","mary","jane","dawn"]};
 alexaApp.intent("nameIntent",
