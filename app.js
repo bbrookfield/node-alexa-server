@@ -39,14 +39,16 @@ alexaApp.intent('getTemp',
     },
     function(req, res) {
         console.log(JSON.stringify(req));
-        res.say("the temperature is 60");
-        request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
-            console.log('error: ', error);
-            console.log('body: ', JSON.parse(body).temp);
-            res.say("the temperature is 60");
-        });
+        res.say("the temperature is " + temperature);
     }
 );
+
+
+setInterval(function() {
+    request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
+        temperature = JSON.parse(body).temp;
+    });
+}, 60000);
 
 
 // Manually hook the handler function into express
