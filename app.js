@@ -13,7 +13,7 @@ var alexaApp = new alexa.app('sample');
 
 alexaApp.launch(function(req, res) {
     console.log('REQUEST', JSON.stringify(req));
-    res.say('I am a whore');
+    res.say('I am amazing');
 });
 
 app.intent('sayNumber',
