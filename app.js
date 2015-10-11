@@ -1,25 +1,35 @@
-var express = require('express')();
+// Start up the server
+var express = require('express');
 var alexa = require('alexa-app');
-var app = new alexa.app('sample');
+var bodyParser = require('body-parser');
 
-app.intent('picknumber',
+var app = express();
+var PORT = process.env.port || 8080;
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+var alexaApp = new alexa.app('test');
+alexaApp.launch(function(request,response) {
+    response.say("You launched the app!");
+});
+alexaApp.dictionary = {"names":["matt","joe","bob","bill","mary","jane","dawn"]};
+alexaApp.intent("nameIntent",
     {
-        "slots":{"number":"NUMBER"}
-        ,"utterances":[ "say the number {number}" ]
+        "slots":{"NAME":"LITERAL"}
+        ,"utterances": [
+        "my {name is|name's} {names|NAME}"
+        ,"set my name to {names|NAME}"
+    ]
     },
     function(request,response) {
-        var number = request.slot('number');
-        response.say("You asked for the number "+ number);
+        response.say("Success!");
     }
 );
+alexaApp.express(app, "/echo/");
 
-// Manually hook the handler function into express
-express.post('/sample',function(req, res) {
-    app.request(req.body)        // connect express to alexa-app
-        .then(function(response) { // alexa-app returns a promise with the response
-            res.json(response);      // stream it to express' output
-        });
-    console.log(req.body);
-});
+// Launch /echo/test in your browser with a GET request!
 
-express.listen(process.env.PORT);
+app.listen(PORT);
+console.log("Listening on port "+PORT);
+
+//amzn1.echo-sdk-ams.app.cfc1e212-1f38-4cd4-a68e-bcd3121ee5fe
