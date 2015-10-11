@@ -9,14 +9,14 @@ app.use(bodyParser.json());
 
 var alexa = require('alexa-app');
 
-
+var temperature = 60;
 var alexaApp = new alexa.app('sample');
 alexaApp.launch(function(req, res) {
     console.log('REQUEST', JSON.stringify(req));
     res.say('I am amazing');
 });
 
-/*alexaApp.intent('setTemp',
+alexaApp.intent('setTemp',
     {
         "slots": {
             "temperature": "NUMBER"
@@ -28,7 +28,7 @@ alexaApp.launch(function(req, res) {
         temperature = req.slot('temperature');
         res.say("I have set the temperature to " + temperature);
     }
-);*/
+);
 
 alexaApp.intent('getTemp',
     {
