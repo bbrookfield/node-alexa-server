@@ -1,0 +1,22 @@
+{
+  "name": "alexa-thermostat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbrookfield/alexa-thermostat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bbrookfield/alexa-thermostat/issues"
+  },
+  "homepage": "https://github.com/bbrookfield/alexa-thermostat#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
