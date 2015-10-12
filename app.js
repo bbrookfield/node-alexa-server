@@ -11,10 +11,10 @@ var alexa = require('alexa-app');
 
 var temperature = 60;
 var targetTemperature = 60;
-var alexaApp = new alexa.app('sample');
+var alexaApp = new alexa.app('thermostat');
 alexaApp.launch(function(req, res) {
     console.log('REQUEST', JSON.stringify(req));
-    res.say('I am amazing');
+    res.say('Bill, stop waiting to finish the command and speak normally. For god\'s sake man!');
 });
 
 alexaApp.intent('setTemp',
@@ -22,7 +22,7 @@ alexaApp.intent('setTemp',
         "slots": {
             "temperature": "NUMBER"
         }
-        ,"utterances":[ "set the temperature to {temperature}" ]
+        ,"utterances":[ "set the temp to {temperature}" ]
     },
     function(req, res) {
         console.log(JSON.stringify(req));
@@ -36,7 +36,7 @@ alexaApp.intent('getTemp',
         "slots": {
             "temperature": "NUMBER"
         }
-        ,"utterances":["what is the temperature"]
+        ,"utterances":["what is the current"]
     },
     function(req, res) {
         console.log(JSON.stringify(req));
@@ -54,7 +54,7 @@ setInterval(function() {
 
 
 // Manually hook the handler function into express
-app.post('/sample',function(req, res) {
+app.post('/thermostat',function(req, res) {
     alexaApp.request(req.body)        // connect express to alexa-app
         .then(function(response) { // alexa-app returns a promise with the response
             res.json(response);      // stream it to express' output
