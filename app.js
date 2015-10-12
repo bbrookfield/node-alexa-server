@@ -36,7 +36,7 @@ alexaApp.intent('getTemp',
         "slots": {
             "temperature": "NUMBER"
         }
-        ,"utterances":["what is the current"]
+        ,"utterances":["what is the current status"]
     },
     function(req, res) {
         console.log(JSON.stringify(req));
