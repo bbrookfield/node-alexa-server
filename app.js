@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var request = require('request');
 
-var Promises = require('promise');
+var q = require('q');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -44,23 +44,21 @@ alexaApp.intent('getTemp',
     // call getTemp() to update the local temp vars using promises
     console.log(JSON.stringify(req));
     console.log('before get temp');
-    var rst;
-    rst = getTemp;
-    console.log('after get temp');
-    res.say("the current temperature for your thermostat is " + temperature + " degrees, and the target temperature is " + targetTemperature + " degrees.");
+    getTemp().then(function(data){
+        res.say ("blah blah temp " + data.temp + " and blah blah temp is " + data.target )});
+
     }
 );
 
 
 function getTemp() {
-return new Promises(function (fulfill, reject){
+    var deferred = q.defer();
     request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
+
         body = JSON.parse(body);
-        temperature = body.temp;
-        targetTemperature = body.t_cool;
-        fulfill();
-        });
+        deferred.resolve({temp: body.temp, target: body.t_cool}
     });
+return deferred.promise;
 }
 
 
