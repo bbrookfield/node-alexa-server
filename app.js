@@ -45,7 +45,7 @@ alexaApp.intent('getTemp',
 //            console.log(data);
 //            res.say("the current temperature for your thermostat is " + data.temp + " degrees, and the target temperature is " + data.target + " degrees."); });
 //    }
-)
+    };
 
 
 function getTemp(cb) {
