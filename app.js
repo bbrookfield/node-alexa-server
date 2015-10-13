@@ -40,22 +40,21 @@ alexaApp.intent('getTemp',
     },
     function(req, res) {
         console.log(JSON.stringify(req));
-        res.say("the current temperature for your thermostat is " + temperature + " degrees, and the target temperature is " + targetTemperature + " degrees.");
+        getTemp (function (data){res.say("the current temperature for your thermostat is " + data.temp + " degrees, and the target temperature is " + data.target + " degrees."); });
     }
 );
 
 
-setInterval(function() {
+function getTemp(cb) {
     request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
-        temperature = JSON.parse(body).temp;
-        targetTemperature = JSON.parse(body).t_cool;
-    });
-}, 60000);
+        cb ({temp: body.temp, target: body.t_cool});
+});}
 
 
 // Manually hook the handler function into express
 app.post('/thermostat',function(req, res) {
-    alexaApp.request(req.body)        // connect express to alexa-app
+    alexaApp.request
+    (req.body)        // connect express to alexa-app
         .then(function(response) { // alexa-app returns a promise with the response
             res.json(response);      // stream it to express' output
         });
