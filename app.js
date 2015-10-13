@@ -56,7 +56,7 @@ function getTemp() {
     request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
 
         body = JSON.parse(body);
-        deferred.resolve({temp: body.temp, target: body.t_cool}
+        deferred.resolve({temp: body.temp, target: body.t_cool});
     });
 return deferred.promise;
 }
