@@ -39,13 +39,16 @@ alexaApp.intent('getTemp',
         }
         ,"utterances":["what is the current status"]
     },
+    function(req, res) {
     // call getTemp() to update the local temp vars using promises
     console.log(JSON.stringify(req));
     console.log('before get temp');
-    getTemp;
+    var rst;
+    rst = getTemp;
     console.log('after get temp');
     res.say("the current temperature for your thermostat is " + temperature + " degrees, and the target temperature is " + targetTemperature + " degrees.");
-)}
+    }
+);
 
 
 function getTemp() {
