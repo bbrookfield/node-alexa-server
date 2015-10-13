@@ -40,6 +40,7 @@ alexaApp.intent('getTemp',
     },
     function(req, res) {
         console.log(JSON.stringify(req));
+        res.send('Please wait, I am getting the temperature.');
         getTemp (function (data){
             console.log(data);
 
