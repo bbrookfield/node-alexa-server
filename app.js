@@ -47,6 +47,7 @@ alexaApp.intent('getTemp',
 
 function getTemp(cb) {
     request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
+        body = JSON.parse(body);
         cb ({temp: body.temp, target: body.t_cool});
 });}
 
