@@ -45,8 +45,10 @@ alexaApp.intent('getTemp',
     console.log(JSON.stringify(req));
     console.log('before get temp');
     getTemp().then(function(data){
+        console.log(data);
         res.say ("blah blah temp " + data.temp + " and blah blah temp is " + data.target )});
 
+    console.log('after get temp');
     }
 );
 
