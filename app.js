@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var request = require('request');
+var Promises = require('promise');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -38,21 +39,25 @@ alexaApp.intent('getTemp',
         }
         ,"utterances":["what is the current status"]
     },
-    function(req, res) {
-        console.log(JSON.stringify(req));
-        res.send();
-        getTemp (function (data) {
-            console.log(data);
-            res.say("the current temperature for your thermostat is " + data.temp + " degrees, and the target temperature is " + data.target + " degrees.");
-        });
-});
+    // call getTemp() to update the local temp vars using promises
+    console.log(JSON.stringify(req));
+    console.log('before get temp');
+    getTemp;
+    console.log('after get temp');
+    res.say("the current temperature for your thermostat is " + temperature + " degrees, and the target temperature is " + targetTemperature + " degrees.");
+)}
 
 
-function getTemp(cb) {
+function getTemp() {
+return new Promises(function (fulfill, reject){
     request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
         body = JSON.parse(body);
-        cb ({temp: body.temp, target: body.t_cool});
-});}
+        temperature = body.temp;
+        targetTemperature = body.t_cool;
+        fulfill();
+        });
+    )};
+}
 
 
 // Manually hook the handler function into express
