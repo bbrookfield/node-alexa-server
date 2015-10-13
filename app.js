@@ -59,7 +59,7 @@ return new Promises(function (fulfill, reject){
         targetTemperature = body.t_cool;
         fulfill();
         });
-    )};
+    });
 }
 
 
