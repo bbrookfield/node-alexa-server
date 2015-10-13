@@ -41,10 +41,11 @@ alexaApp.intent('getTemp',
     function(req, res) {
         console.log(JSON.stringify(req));
         res.say("Please wait, I am getting the temperature.");
-//        getTemp (function (data){
-//            console.log(data);
-//            res.say("the current temperature for your thermostat is " + data.temp + " degrees, and the target temperature is " + data.target + " degrees."); });
- });
+        getTemp (function (data) {
+            console.log(data);
+            res.say("the current temperature for your thermostat is " + data.temp + " degrees, and the target temperature is " + data.target + " degrees.");
+        });
+});
 
 
 function getTemp(cb) {
