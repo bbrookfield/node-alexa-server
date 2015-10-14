@@ -5,6 +5,7 @@ var request = require('request');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 // Manually hook the handler function into express
 
 var alexa = require('alexa-app');
@@ -12,16 +13,16 @@ var alexa = require('alexa-app');
 var alexaApp = new alexa.app('thermostat');
 alexaApp.launch(function(req, res) {
     console.log('REQUEST', JSON.stringify(req));
-    res.say('Bill, stop waiting to finish the command and speak normally. For god\'s sake man!');
+    var phrase = "You can say, Alexa ask thermostat what is the temperature, or Alexa tell thermostat set the temperature to 75!";
+    var options = {
+        shouldEndSession: false,
+        outputSpeech: phrase,
+        reprompt: "Sorry, I did not understand what you said."
+        };
+    alexa.send(req, res, options);
 });
 
 alexaApp.intent('setTemp',
-    {
-        "slots": {
-            "temperature": "NUMBER"
-        }
-        ,"utterances":[ "set the temp to {temperature}" ]
-    },
     function(req, res) {
         console.log(JSON.stringify(req));
         request.post(process.env.THERMOSTAT_URL + '/tstat', {json: {t_cool: parseFloat(req.slot('temperature'))}});
