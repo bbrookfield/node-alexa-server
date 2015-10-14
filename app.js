@@ -30,17 +30,11 @@ alexaApp.intent('setTemp',
 );
 
 alexaApp.intent('getTemp',
-    {
-        "slots": {
-            "temperature": "NUMBER"
-        }
-        ,"utterances":["what is the current status"]
-    },
     function(req, res) {
         console.log(JSON.stringify(req));
         request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
             body = JSON.parse(body);
-            res.say("the current temperature for your thermostat is " + body.temp + " degrees, and the target temperature is " + body.t_cool + " degrees.");
+            res.say("The current temperature for your thermostat is " + body.temp + " degrees, and the target temperature is " + body.t_cool + " degrees.");
             res.send();
         });
         return false;
