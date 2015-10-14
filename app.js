@@ -3,16 +3,12 @@ var bodyParser = require('body-parser');
 var app = express();
 var request = require('request');
 
-var q = require('q');
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Manually hook the handler function into express
 
 var alexa = require('alexa-app');
 
-var temperature = 60;
-var targetTemperature = 60;
 var alexaApp = new alexa.app('thermostat');
 alexaApp.launch(function(req, res) {
     console.log('REQUEST', JSON.stringify(req));
@@ -41,33 +37,20 @@ alexaApp.intent('getTemp',
         ,"utterances":["what is the current status"]
     },
     function(req, res) {
-    // call getTemp() to update the local temp vars using promises
-    console.log(JSON.stringify(req));
-    console.log('before get temp');
-    getTemp().then(function(data){
-        console.log(data);
-        res.say ("blah blah temp " + data.temp + " and blah blah temp is " + data.target )});
-
-    console.log('after get temp');
+        console.log(JSON.stringify(req));
+        request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
+            body = JSON.parse(body);
+            res.say("the current temperature for your thermostat is " + body.temp + " degrees, and the target temperature is " + body.t_cool + " degrees.");
+            res.send();
+        });
     }
 );
 
 
-function getTemp() {
-    var deferred = q.defer();
-    request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
-
-        body = JSON.parse(body);
-        deferred.resolve({temp: body.temp, target: body.t_cool});
-    });
-return deferred.promise;
-}
-
 
 // Manually hook the handler function into express
 app.post('/thermostat',function(req, res) {
-    alexaApp.request
-    (req.body)        // connect express to alexa-app
+    alexaApp.request(req.body)        // connect express to alexa-app
         .then(function(response) { // alexa-app returns a promise with the response
             res.json(response);      // stream it to express' output
         });
