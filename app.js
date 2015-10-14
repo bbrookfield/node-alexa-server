@@ -43,6 +43,7 @@ alexaApp.intent('getTemp',
             res.say("the current temperature for your thermostat is " + body.temp + " degrees, and the target temperature is " + body.t_cool + " degrees.");
             res.send();
         });
+        return false;
     }
 );
 
