@@ -13,13 +13,7 @@ var alexa = require('alexa-app');
 var alexaApp = new alexa.app('thermostat');
 alexaApp.launch(function(req, res) {
     console.log('REQUEST', JSON.stringify(req));
-    var phrase = "You can say, Alexa ask thermostat what is the temperature, or Alexa tell thermostat set the temperature to 75!";
-    var options = {
-        shouldEndSession: false,
-        outputSpeech: phrase,
-        reprompt: "Sorry, I did not understand what you said."
-        };
-    alexa.send(req, res, options);
+    res.say("You can say, Alexa ask thermostat what is the temperature, or Alexa tell thermostat set the temperature to 75!");
 });
 
 alexaApp.intent('setTemp',
