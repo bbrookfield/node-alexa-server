@@ -21,9 +21,9 @@ alexaApp.launch(function(req, res) {
 alexaApp.intent('setTemp',
     function(req, res) {
         console.log(JSON.stringify(req));
-        request.post(process.env.THERMOSTAT_URL + '/tstat', {json: {t_cool: parseFloat(req.slot('temperature'))}});
-        res.card("Thermostat is set to " + parseInt(req.slot('temperature')) + " degrees");
-        res.say("Thermostat Skill","Thermostat is set to " + parseInt(req.slot('temperature')) + " degrees");
+        request.post(process.env.THERMOSTAT_URL + '/tstat', {json: {t_cool: parseFloat(req.slot('setTemperature'))}});
+        res.card("Thermostat is set to " + parseInt(req.slot('setTemperature')) + " degrees");
+        res.say("Thermostat Skill","Thermostat is set to " + parseInt(req.slot('setTemperature')) + " degrees");
 });
 
 // process get temperature request
