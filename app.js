@@ -14,7 +14,7 @@ var alexaApp = new alexa.app('thermostat');
 // process launch request when no utterances detected
 alexaApp.launch(function(req, res) {
     console.log('REQUEST', JSON.stringify(req));
-    res.say("You can say, Alexa ask thermostat what is the temperature, or Alexa tell thermostat set the temperature to 75!");
+    res.reprompt("You can say, what is the temperature, or set the temperature to 75!");
 });
 
 // process set temperature request
@@ -22,16 +22,21 @@ alexaApp.intent('setTemp',
     function(req, res) {
         console.log(JSON.stringify(req));
         request.post(process.env.THERMOSTAT_URL + '/tstat', {json: {t_cool: parseFloat(req.slot('temperature'))}});
-        res.say("Thermostat is set to " + parseInt(req.slot('temperature')) + " degrees");
+        res.card("Thermostat is set to " + parseInt(req.slot('temperature')) + " degrees");
+        res.say("Thermostat Skill","Thermostat is set to " + parseInt(req.slot('temperature')) + " degrees");
 });
 
 // process get temperature request
+//
+// This intent uses the res.send() feature for a delayed response back to alexa.
+//
 alexaApp.intent('getTemp',
     function(req, res) {
         console.log(JSON.stringify(req));
         request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
             body = JSON.parse(body);
             res.say("Thermostat current temperature is " + body.temp + " degrees, the target temperature is " + body.t_cool + " degrees.");
+            res.card("Thermostat Skill","Thermostat current temperature is " + body.temp + " degrees, the target temperature is " + body.t_cool + " degrees.");
             res.send();
         });
         return false;
