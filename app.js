@@ -14,8 +14,7 @@ var alexaApp = new alexa.app('thermostat');
 // process launch request when no utterances detected
 alexaApp.launch(function(req, res) {
     console.log('REQUEST', JSON.stringify(req));
-    res.say("Hello");
-    res.reprompt("You can say, what is the temperature, or set the temperature to 75!");
+    res.say("You can say, what is the temperature, or set the temperature to 75!");
 });
 
 // process set temperature request
@@ -28,9 +27,7 @@ alexaApp.intent('setTemp',
 });
 
 // process get temperature request
-//
 // This intent uses the res.send() feature for a delayed response back to alexa due to async http request.
-//
 alexaApp.intent('getTemp',
     function(req, res) {
         console.log(JSON.stringify(req));
