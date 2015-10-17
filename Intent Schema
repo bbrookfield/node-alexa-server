@@ -1,0 +1,18 @@
+{
+  "intents": [
+    {
+    "intent": "getTemp",
+      "slots": [{
+        "name": "getTemperature",
+        "type": "AMAZON.LITERAL"
+      }]
+    },
+    {
+    "intent": "setTemp",
+      "slots": [{
+        "name": "setTemperature",
+        "type": "AMAZON.NUMBER"
+      }]
+    }
+  ]
+}

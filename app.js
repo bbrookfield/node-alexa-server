@@ -17,6 +17,7 @@ alexaApp.launch(function(req, res) {
     res.say("You can say, what is the temperature, or set the temperature to 75!");
 });
 
+
 // process set temperature request
 alexaApp.intent('setTemp',
     function(req, res) {
