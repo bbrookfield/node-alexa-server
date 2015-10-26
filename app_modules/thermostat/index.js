@@ -1,10 +1,6 @@
 'use strict';
 var request = require('request');
 var alexa = require('alexa-app');
-
-module.exports = function(cb) {
-  global.thermostat = thermostatApp;
-};
 var thermostatApp = new alexa.app('thermostat');
 
 thermostatApp.intent('setTemp', function(req, res) {
@@ -30,3 +26,8 @@ thermostatApp.launch(function(req, res) {
   console.log('REQUEST', JSON.stringify(req));
   res.say("You can say, what is the temperature, or set the temperature to 75!");
 });
+
+module.exports = function(cb) {
+  global.thermostat = thermostatApp;
+  cb();
+};

@@ -1,11 +1,6 @@
 'use strict';
 var request = require('request');
 var alexa = require('alexa-app');
-
-module.exports = function() {
-  global.tv = directTVApp
-};
-
 var directTVApp = new alexa.app('directTV');
 
 // process set temperature request
@@ -14,3 +9,8 @@ directTVApp.intent('setChannel', function(req, res) {
   res.card("Direct TV Skill","TV set to channel " + parseInt(req.slot('Channel')));
   res.say("I have set the TV to channel " + parseInt(req.slot('Channel')) + " as requested");
 });
+
+module.exports = function(cb) {
+  global.tv = directTVApp;
+  cb();
+};
