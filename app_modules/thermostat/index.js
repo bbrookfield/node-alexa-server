@@ -13,6 +13,7 @@ thermostatApp.intent('setTemp', function(req, res) {
 // This intent uses the res.send() feature for a delayed response back to alexa due to async http request.
 thermostatApp.intent('getTemp', function(req, res) {
   request(process.env.THERMOSTAT_URL + '/tstat', function (error, response, body) {
+    console.log('Error: ' + error, 'RESPONSE: ' + response, 'BODY: ' + body);
     body = JSON.parse(body);
     res.say("Thermostat current temperature is " + body.temp + " degrees, the target temperature is " + body.t_cool + " degrees.");
     res.card("Thermostat Skill","Thermostat current temperature is " + body.temp + " degrees, the target temperature is " + body.t_cool + " degrees.");
