@@ -10,6 +10,12 @@ directTVApp.intent('setChannel', function(req, res) {
   res.say("I have set the TV to channel " + parseInt(req.slot('Channel')) + " as requested");
 });
 
+directTVApp.launch(function(req, res) {
+    console.log('REQUEST', JSON.stringify(req));
+    res.say("You can say, set to channel 44, or any number that is a valid channel");
+});
+
+
 module.exports = function(cb) {
   global.tv = directTVApp;
   cb();
