@@ -16,7 +16,7 @@ For example a request to `https://[your server URL]/thermostat` would route the 
 2. Then clone the module into your `app_modules` directory
   * *example:* `git clone https://github.com/bbrookfield/alexa-radiothermostat`
 
-####Here is a list of compatible plugins (If you create one, let me know and I will add it to the list)
+####Here is a list of compatible modules (If you create one, let me know and I will add it to the list)
 1. [alexa-directTV](https://github.com/bbrookfield/alexa-directTV) - For changing channels on your DirectTV
 2. [alexa-radiothermostat](https://github.com/bbrookfield/alexa-radiothermostat) - For getting the current temperature and changing the temperature on your [Radio Thermostat](http://www.radiothermostat.com/)
 
