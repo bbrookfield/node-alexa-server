@@ -1,5 +1,5 @@
 # alexa-server
-A node based server for your Amazon Echo
+A modular [NodeJS](https://nodejs.org/en/) based server for your Amazon Echo
 
 ####Getting Started
 1. clone the app `git clone https://github.com/bbrookfield/node-alexa-server`
