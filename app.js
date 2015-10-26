@@ -2,6 +2,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var fs = require('fs');
+var async = require('async');
 var thermostat = require('./app_modules/thermostat');
 
 
