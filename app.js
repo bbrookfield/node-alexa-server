@@ -4,10 +4,6 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var fs = require('fs');
 var async = require('async');
-var thermostat = require('./app_modules/thermostat');
-
-
-
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
