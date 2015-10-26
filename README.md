@@ -9,7 +9,7 @@ A modular [NodeJS](https://nodejs.org/en/) based server for your Amazon Echo
 ####How this application works
 The alexa-server application is an [express](http://expressjs.com/) webserver that routes Amazon requests to various app modules located in your **app_modules** directory. Each of these modules creates a global function that is called by the express router based on the URL path.
 
-For example a request to https://[your server URL]/thermostat would route the request to **global.thermostat**
+For example a request to `https://[your server URL]/thermostat` would route the request to **global.thermostat**
 
 ####Adding modules
 1. To add modules to your server, you need to create an `app_modules` directory in the root directory
