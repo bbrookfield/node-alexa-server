@@ -2,10 +2,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
-var thermostat = require('./app_modules/thermostat');
-
-
-
+var fs = require('fs');
+var async = require('async');
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,9 +34,11 @@ function init(cb) {
 
 init(function() {
   // Manually hook the handler function into express
-  app.post('/:service',function(req, res) {
+  app.post('/:service', function(req, res) {
+    console.log(req.body);
     global[req.params.service].request(req.body)
       .then(function(response) {
+        console.log(response);
         res.json(response);
       });
   });

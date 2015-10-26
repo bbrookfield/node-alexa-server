@@ -1,13 +1,18 @@
-# alexa-thermostat
+# alexa-server
+A node based server for your Amazon Echo
 
-Simple Alexa skills app to request and set the current temperature and target temperature on
-a filtret CT50 thermostat.
+####Getting Started
+1. clone the app `git clone https://github.com/bbrookfield/node-alexa-server`
+2. Setup an [alexa skill](https://developer.amazon.com/edw/home.html#/skills)
+3. ######TODO: finish adding steps to setup alexa app
 
-The request is sent to my thermostat via a Dynamic DNS and my router port forwards to
-my internal thermostat's IP address.
+####How this application works
+The alexa-server application is an [express](http://expressjs.com/) webserver that routes Amazon requests to various app modules located in your **app_modules** directory. Each of these modules creates a global function that is called by the express router based on the URL path.
 
-This code is a mis mash of other code I found while researching building an Alexa Skill.
+For example a request to https://[your server URL]/thermostat would route the request to **global.thermostat**
 
-Big thanks to Matt Kruse for alexa-app. alexa-app makes the process of writing alexa skills simple.
+####Using Heroku
+######TODO: Add heroku info
 
-Bill B
+####Thanks
+[alexa-app](https://github.com/matt-kruse/alexa-app) - by [Matt Kruse](https://github.com/matt-kruse)
