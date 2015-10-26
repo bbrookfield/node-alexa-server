@@ -1,3 +1,4 @@
 .idea/
 node_modules/
+# Comment the line below when deploying to your heroku servers
 app_modules/**
