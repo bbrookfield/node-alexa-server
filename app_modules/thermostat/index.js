@@ -3,10 +3,7 @@ var request = require('request');
 var alexa = require('alexa-app');
 
 module.exports = function(cb) {
-  global.thermostat = {
-    getTemp: getTemp,
-    setTemp: setTemp
-  }
+  global.thermostat = thermostatApp;
 };
 var thermostatApp = new alexa.app('thermostat');
 
