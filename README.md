@@ -3,12 +3,24 @@ A modular [NodeJS](https://nodejs.org/en/) based server for your Amazon Echo
 
 ##Table of Contents
 * [Getting Started](#getting-started)
+  * [Creating an Account](#creating-an-account)
+  * [Create Your First Skill](#create-your-first-skill)
+  * [Getting Started With The Alexa Server](#getting-started-with-server)
 * [How it Works](#how-this-application-works)
 * [Compatible Modules](#compatible-modules-if-you-create-one-let-me-know-and-i-will-add-it-to-the-list)
 * [Deploying with Heroku](#using-heroku)
 * [Credits](#thanks)
 
 ##Getting Started
+In this section we will walk you through everything you need to get started with your Amazon Echo
+
+####Creating an Account
+To become an Alexa developer you must sign up [HERE](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit)
+
+####Create Your First Skill
+TODO: Creating your first skill
+
+####Getting Started with Server
 1. clone the app `git clone https://github.com/bbrookfield/node-alexa-server`
 2. Setup an [alexa skill](https://developer.amazon.com/edw/home.html#/skills)
 3. TODO: finish adding steps to setup alexa app
