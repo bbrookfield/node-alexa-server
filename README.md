@@ -46,13 +46,15 @@ Add an *Intent Schema* and *Utterance*
 
 **Step 5**
 
-Test your new skill
+Test your new skill.
+
+NOTE: You will have to complete **Getting Started with Server** before you can test your new skill.
 
 ![alt text](http://gdurl.com/H8zl)
 
 
 ####Getting Started with Server
-1. clone the app `git clone https://github.com/bbrookfield/node-alexa-server`
+1. Clone the app `git clone https://github.com/bbrookfield/node-alexa-server`
 2. Install modules `npm install`
 3. Run the application `PORT=9000 node app.js`
 4. If no errors occur then you can begin [adding modules](#adding-modules) or [create your own module](#create-your-own-module)
