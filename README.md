@@ -18,7 +18,37 @@ In this section we will walk you through everything you need to get started with
 To become an Alexa developer you must sign up [HERE](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit)
 
 ####Create Your First Skill
-TODO: Creating your first skill
+
+**Step 1**
+
+Click on *Get Started* under *Alexa Skills Kit*
+
+![alt text](http://gdurl.com/Y5Mf)
+
+**Step 2**
+
+Click *Add A New Skill*
+
+![alt text](http://gdurl.com/vCuK)
+
+**Step 3**
+
+Fill out the *Create A New Skill* form
+
+![alt text](http://gdurl.com/FP00)
+
+**Step 4**
+
+Add an *Intent Schema* and *Utterance*
+
+![alt text](http://gdurl.com/gEDZ)
+
+**Step 5**
+
+Test your new skill
+
+![alt text](http://gdurl.com/H8zl)
+
 
 ####Getting Started with Server
 1. clone the app `git clone https://github.com/bbrookfield/node-alexa-server`
