@@ -52,8 +52,9 @@ Test your new skill
 
 ####Getting Started with Server
 1. clone the app `git clone https://github.com/bbrookfield/node-alexa-server`
-2. Setup an [alexa skill](https://developer.amazon.com/edw/home.html#/skills)
-3. TODO: finish adding steps to setup alexa app
+2. Install modules `npm install`
+3. Run the application `PORT=9000 node app.js`
+4. If no errors occur then you can begin [adding modules](#adding-modules) or [create your own module](#create-your-own-module)
 
 ##How this application works
 The alexa-server application is an [express](http://expressjs.com/) webserver that routes Amazon requests to various app modules located in your **app_modules** directory. Each of these modules creates a global function that is called by the express router based on the URL path.
@@ -66,8 +67,11 @@ For example a request to `https://[your server URL]/thermostat` would route the 
   * *example:* `git clone https://github.com/bbrookfield/alexa-radiothermostat`
 
 ##Compatible modules (If you create one, let me know and I will add it to the list)
-1. [alexa-directTV](https://github.com/bbrookfield/alexa-directTV) - For changing channels on your DirectTV
-2. [alexa-radiothermostat](https://github.com/bbrookfield/alexa-radiothermostat) - For getting the current temperature and changing the temperature on your [Radio Thermostat](http://www.radiothermostat.com/)
+1. [alexa-sampleskill](https://github.com/bbrookfield/alexa-sampleskill) - This is a sort of "Hello World" module to help get you started
+2. [alexa-directTV](https://github.com/bbrookfield/alexa-directTV) - For changing channels on your DirectTV
+3. [alexa-radiothermostat](https://github.com/bbrookfield/alexa-radiothermostat) - For getting the current temperature and changing the temperature on your [Radio Thermostat](http://www.radiothermostat.com/)
+
+##Create Your Own Module
 
 ##Using Heroku
 I have included a procfile if you choose to deploy to [heroku](https://heroku.com)
