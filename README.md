@@ -1,5 +1,5 @@
 # alexa-server
-A modular [NodeJS](https://nodejs.org/en/) based server for your Amazon Echo
+A modular [NodeJS](https://nodejs.org/en/) based server for your Amazon Echo skills using the Alexa Skills Kit.
 
 ##Table of Contents
 * [Getting Started](#getting-started)
@@ -13,7 +13,7 @@ A modular [NodeJS](https://nodejs.org/en/) based server for your Amazon Echo
 * [Credits](#thanks)
 
 ##Getting Started
-In this section we will walk you through everything you need to get started with your Amazon Echo
+In this section we will walk you through everything you need to get started with creating skills for your Amazon Echo.
 
 ####Creating an Account
 To become an Alexa developer you must sign up [HERE](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit)
@@ -22,7 +22,7 @@ To become an Alexa developer you must sign up [HERE](https://developer.amazon.co
 
 **Step 1**
 
-Click on *Get Started* under *Alexa Skills Kit*
+Once you have a developer account setup and have logged in, Click on *Get Started* under *Alexa Skills Kit*
 
 ![alt text](http://gdurl.com/Y5Mf)
 
