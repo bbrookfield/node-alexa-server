@@ -8,6 +8,7 @@ A modular [NodeJS](https://nodejs.org/en/) based server for your Amazon Echo
   * [Getting Started With The Alexa Server](#getting-started-with-server)
 * [How it Works](#how-this-application-works)
 * [Compatible Modules](#compatible-modules-if-you-create-one-let-me-know-and-i-will-add-it-to-the-list)
+* [Create Your Own Module](create-your-own-module)
 * [Deploying with Heroku](#using-heroku)
 * [Credits](#thanks)
 
@@ -72,6 +73,7 @@ For example a request to `https://[your server URL]/thermostat` would route the 
 3. [alexa-radiothermostat](https://github.com/bbrookfield/alexa-radiothermostat) - For getting the current temperature and changing the temperature on your [Radio Thermostat](http://www.radiothermostat.com/)
 
 ##Create Your Own Module
+TODO: Add instructions for creating your own module
 
 ##Using Heroku
 I have included a procfile if you choose to deploy to [heroku](https://heroku.com)
