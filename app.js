@@ -35,7 +35,8 @@ function init(cb) {
 init(function() {
   // Manually hook the handler function into express
   app.post('/:service', function(req, res) {
-    console.log(req.body);
+    //console.log(req.body);
+      // console.log(req.params);
     global[req.params.service].request(req.body)
       .then(function(response) {
         console.log(response);
