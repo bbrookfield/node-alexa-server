@@ -5,7 +5,7 @@ var alexa = require('alexa-app');
 var yamahaApp = new alexa.app('yamaha');
 
 yamahaApp.intent('setInput', function (req, res) {
-    request.post(process.env.YAMAHA_URL + '/command.html?' + req.slot('Input'), function (err, response, body) {
+    request(process.env.YAMAHA_URL + '/command.html?' + req.slot('Input'), function (err, response, body) {
         if (err) {
             res.say(err);
         } else {
