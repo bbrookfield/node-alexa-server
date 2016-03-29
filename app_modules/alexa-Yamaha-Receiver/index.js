@@ -13,7 +13,7 @@ yamahaApp.intent('setInput', function (req, res) {
             res.say("Yamaha Receiver is now set to input " + req.slot('Input'));
         }
     });
-    return false;
+    return true;
 });
 
 
