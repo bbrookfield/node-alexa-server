@@ -5,12 +5,12 @@ var alexa = require('alexa-app');
 var yamahaApp = new alexa.app('yamaha');
 
 yamahaApp.intent('setInput', function (req, res) {
-    request.post(process.env.YAMAHA_URL + '/?' + req.slot('Input'), function (err, response, body) {
+    request.post(process.env.YAMAHA_URL + '/command.html/?' + req.slot('Input'), function (err, response, body) {
         if (err) {
             res.say(err);
         } else {
             res.card("Yamaha Receiver Skill", "Yamaha Receiver set to input " + req.slot('Input'));
-            res.say("Yamaha Receiver set to input " + req.slot('Input'));
+            res.say("Yamaha Receiver is now set to input " + req.slot('Input'));
         }
     });
     return false;
