@@ -1,6 +1,7 @@
-# alexa-radiothermostat
+# alexa-Ymaha Receiver control
 
-This is a module for [node-alexa-server](https://github.com/bbrookfield/node-alexa-server) to integrate with [Radio Thermostats](http://www.radiothermostat.com/) 
+This is a module for [node-alexa-server](https://github.com/bbrookfield/node-alexa-server) to integrate with most Yamaha receivers that have network capability.
+This skill sends a HTTP url that is evaluated by my  [EventGhost](https:www.eventghost.org) service running on my home PC.
 
 ####Getting started
 1. Make sure you have downloaded and setup your [node-alexa-server](https://github.com/bbrookfield/node-alexa-server)
@@ -8,40 +9,30 @@ This is a module for [node-alexa-server](https://github.com/bbrookfield/node-ale
 3. Clone this project into that directory
 4. Setup your Alexa skill
 5. Configure your intents
+6. Install EventGhost on your home PC
+7. Enable WebServer Plugin
+7. Add Yamaha Plugin for EventGhost.
+8.  <<< need steps for Yamaha Trigger setups here >>>
+
+
+
   
   ```
   {
-    "intents": [
-      {
-      "intent": "getTemp",
+    "intents": [{
+      "intent": "setInput",
         "slots": [{
-          "name": "getTemperature",
+          "name": "Input",
           "type": "AMAZON.LITERAL"
         }]
-      },
-      {
-      "intent": "setTemp",
-        "slots": [{
-          "name": "setTemperature",
-          "type": "AMAZON.NUMBER"
-        }]
-      }
-    ]
+     }]
   }
   ```
-6. Configure your utterances
+6. Configure your utterances (example for setting input to TV)
 
   ```
-  setTemp set to {setTemperature}
-  setTemp set the temp to {setTemperature}
-  setTemp set the temperature to {setTemperature}
-  setTemp set temperature to {setTemperature}
-  setTemp adjust temperature to {setTemperature}
-  setTemp adjust the temperature to {setTemperature}
-  getTemp what is the temperature
-  getTemp what is temperature
-  getTemp what's the temperature
-  getTemp say the temperature
-  getTemp tell me the temperature
-  getTemp tell me temperature
+setInput set input {TV|Input}
+setInput set to input {TV|Input}
+setInput set input to {TV|Input}
+setInput set input as {TV|Input}
   ```
