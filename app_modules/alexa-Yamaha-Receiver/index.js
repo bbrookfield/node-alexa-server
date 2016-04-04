@@ -13,11 +13,19 @@ yamahaApp.intent('setInput', function (req, res) {
     return false;
 });
 
+yamahaApp.intent('setVolume', function (req, res) {
+    request(process.env.YAMAHA_URL + '/command.html/?' + req.slot('Input'), function (err, response, body) {
+        res.card("Yamaha Receiver Skill", "Yamaha Receiver volume set  " + req.slot('Volume'));
+        res.say("Yamaha Receiver is volume set " + req.slot('Volume'));
+        res.send();
+    });
+    return false;
+});
 
 // process launch request when no utterances detected
 yamahaApp.launch(function (req, res) {
     console.log('REQUEST', JSON.stringify(req));
-    res.say("You can say, Set input to TV, or set input to echo!");
+    res.say("You can say, Set input to TV or music or set volume up or down!");
 });
 
 module.exports = function (cb) {
