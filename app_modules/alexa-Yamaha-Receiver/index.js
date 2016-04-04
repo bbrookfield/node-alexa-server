@@ -14,7 +14,7 @@ yamahaApp.intent('setInput', function (req, res) {
 });
 
 yamahaApp.intent('setVolume', function (req, res) {
-    request(process.env.YAMAHA_URL + '/command.html/?' + req.slot('Input'), function (err, response, body) {
+    request(process.env.YAMAHA_URL + '/command.html/?' + req.slot('Volume'), function (err, response, body) {
         res.card("Yamaha Receiver Skill", "Yamaha Receiver volume set  " + req.slot('Volume'));
         res.say("Yamaha Receiver is volume set " + req.slot('Volume'));
         res.send();
