@@ -1,4 +1,4 @@
-# alexa-Ymaha Receiver control
+# alexa-Yamaha Receiver control
 
 This is a module for [node-alexa-server](https://github.com/bbrookfield/node-alexa-server) to integrate with most Yamaha receivers that have network capability.
 This skill sends a HTTP url that is evaluated by my  [EventGhost](https:www.eventghost.org) service running on my home PC.
@@ -11,28 +11,43 @@ This skill sends a HTTP url that is evaluated by my  [EventGhost](https:www.even
 5. Configure your intents
 6. Install EventGhost on your home PC
 7. Enable WebServer Plugin
-7. Add Yamaha Plugin for EventGhost.
-8.  <<< need steps for Yamaha Trigger setups here >>>
+8. Add Yamaha Plugin for EventGhost.
+9.  <<< need steps for Yamaha Trigger setups here >>>
 
 
 
   
   ```
   {
-    "intents": [{
-      "intent": "setInput",
-        "slots": [{
-          "name": "Input",
-          "type": "AMAZON.LITERAL"
-        }]
-     }]
+  	"intents": [{
+  		"intent": "setInput",
+  		"slots": [{
+  			"name": "Input",
+  			"type": "AMAZON.LITERAL"
+  		}]
+  	}, {
+  		"intent": "setVolume",
+  		"slots": [{
+  			"name": "Volume",
+  			"type": "VolumeSettings"
+  		}]
+  	}]
   }
   ```
-6. Configure your utterances (example for setting input to TV)
+6. Configure your utterances (example for setting input to TV,Music and changing volume)
 
   ```
 setInput set input {TV|Input}
-setInput set to input {TV|Input}
-setInput set input to {TV|Input}
+setInput switch to {TV|Input}
+setInput {TV|Input}
 setInput set input as {TV|Input}
+setInput set input {music|Input}
+setInput set to input {music|Input}
+setInput switch to {music|Input}
+setInput set input as {music|Input}
+setVolume {Volume}
+setVolume set {Volume}
+setVolume set volume {Volume}
+setVolume {Volume} volume
+setVolume volume {Volume}
   ```
