@@ -17,7 +17,7 @@ thermostatApp.intent('getTemp', function(req, res) {
     console.log('Error: ' + error, 'RESPONSE: ' + response, 'BODY: ' + body);
     body = JSON.parse(body);
     res.say("Thermostat current temperature is " + body.temp + " degrees, the target temperature is " + body.t_cool + " degrees.");
-    res.card("Thermostat Skill","Thermostat current temperature is " + body.temp + " degrees, the target temperature is " + body.t_cool + " degrees.");
+    res.card("Thermostat Skill","Thermostat's current temperature is " + body.temp + " degrees, the target temperature is " + body.t_cool + " degrees.");
     res.send();
   });
   return false;
